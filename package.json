@@ -1,0 +1,12 @@
+{
+    "author": "Vlad Balmos <vlad.balmos@code932.com>",
+    "name": "cassandra_meeton_scripts",
+    "description": "Utility scripts dealing with Cassandra data migration and stuff",
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "dependencies": {
+        "minimist": "latest",
+        "shelljs": "latest"
+    }
+}
