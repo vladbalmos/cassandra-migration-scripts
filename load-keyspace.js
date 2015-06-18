@@ -14,6 +14,7 @@ function loadKeyspace(argv)
 {
     var keyspaceDir = argv.keyspaceDir;
     var sstableloader = argv.sstableloader;
+    var initialHost = argv.host || '127.0.0.1';
 
     keyspaceDir = path.resolve(keyspaceDir);
     sstableloader = path.resolve(sstableloader);
@@ -30,7 +31,7 @@ function loadKeyspace(argv)
             var cfName = filesList[index];
             var cf = path.join(keyspaceName, cfName);
 
-            var execStatus = exec(sstableloader + " -d 127.0.0.1 " + cf);
+            var execStatus = exec(sstableloader + " -d " initialHost + " " + cf);
             console.log(execStatus);
         }
     });
@@ -63,7 +64,7 @@ function showUsage()
 {
   var filename = path.basename(__filename);
   console.log("Usage:");
-  console.log("\t" + filename + " --keyspaceDir=path/to/src/keyspace --sstableloader=path/to/sstableloader");
+  console.log("\t" + filename + " --keyspaceDir=path/to/src/keyspace --sstableloader=path/to/sstableloader [--host=127.0.0.1]");
 }
 
 //# vim: tabstop=2 shiftwidth=2
