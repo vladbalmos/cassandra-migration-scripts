@@ -31,7 +31,7 @@ function loadKeyspace(argv)
             var cfName = filesList[index];
             var cf = path.join(keyspaceName, cfName);
 
-            var execStatus = exec(sstableloader + " -d " initialHost + " " + cf);
+            var execStatus = exec(sstableloader + " -d " + initialHost + " " + cf);
             console.log(execStatus);
         }
     });
