@@ -27,4 +27,4 @@ If you want to import the keyspace under a different keyspace name run cp-keyspa
 
 Import the data: 
 
-    load-keyspace.js --keyspaceDir=/path/to/keyspace/data --stableloader=/src/cassandra/bin/sstableloader [--host=127.0.0.1]
+    load-keyspace.js --keyspaceDir=/path/to/keyspace/data --sstableloader=/src/cassandra/bin/sstableloader [--host=127.0.0.1]
