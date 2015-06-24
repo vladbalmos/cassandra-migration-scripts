@@ -21,10 +21,10 @@ Utility scripts for helping with migrating keyspace to another cluster/node
 
 6. Load the keyspace data into the new node.
 
-If you want to import the keyspace under a different keyspace name run cp-keyspace.js:
+If you want to import the keyspace under a different keyspace name run cp-keyspace.js: 
 
-    cp-keyspace.js --src=/path/where/you/untarred/the/data --dst=path/to/new/keyspace/name [--snapshot=snapshot-timestamp]
+    `cp-keyspace.js --src=/path/where/you/untarred/the/data --dst=path/to/new/keyspace/name [--snapshot=snapshot-timestamp]`
 
-Import the data:
+Import the data: 
 
-    load-keyspace.js --keyspaceDir=/path/to/keyspace/data --stableloader=/src/cassandra/bin/sstableloader [--host=127.0.0.1]
+    `load-keyspace.js --keyspaceDir=/path/to/keyspace/data --stableloader=/src/cassandra/bin/sstableloader [--host=127.0.0.1]`
