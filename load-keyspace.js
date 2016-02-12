@@ -15,6 +15,7 @@ function loadKeyspace(argv)
     var keyspaceDir = argv.keyspaceDir;
     var sstableloader = argv.sstableloader;
     var initialHost = argv.host || '127.0.0.1';
+    var initialPort = argv.port || 9160;
 
     keyspaceDir = path.resolve(keyspaceDir);
     sstableloader = path.resolve(sstableloader);
@@ -25,13 +26,16 @@ function loadKeyspace(argv)
         cwd: path.dirname(keyspaceDir),
     };
 
+    console.log('Changing directory to ' + keyspaceDir);
     cd(path.dirname(keyspaceDir));
     fs.readdir(keyspaceDir, function (err, filesList) {
         for (var index in filesList) {
             var cfName = filesList[index];
             var cf = path.join(keyspaceName, cfName);
+            var command = sstableloader + " -d " + initialHost + " -p " + initialPort + ' ' + cf;
+            console.log(command);
 
-            var execStatus = exec(sstableloader + " -d " + initialHost + " " + cf);
+            var execStatus = exec(command);
             console.log(execStatus);
         }
     });
@@ -64,7 +68,7 @@ function showUsage()
 {
   var filename = path.basename(__filename);
   console.log("Usage:");
-  console.log("\t" + filename + " --keyspaceDir=path/to/src/keyspace --sstableloader=path/to/sstableloader [--host=127.0.0.1]");
+  console.log("\t" + filename + " --keyspaceDir=path/to/src/keyspace --sstableloader=path/to/sstableloader [--host=127.0.0.1] [--port 9160]");
 }
 
 //# vim: tabstop=2 shiftwidth=2
